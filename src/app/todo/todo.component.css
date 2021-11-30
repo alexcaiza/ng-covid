@@ -1,0 +1,51 @@
+.table-condensed{
+  font-size: 10px;
+}
+
+.btn {
+  padding: 0.0rem 0.5rem;
+  font-size: 12px !important;
+  }
+
+.form-control {
+  font-size: 10px !important;
+  /*padding: 0.0rem 0.0rem !important;*/
+  height: calc(0.9em + 0.7rem + 1px) !important;
+}
+  
+
+.table td, .table th {
+  padding: 0.1rem !important;
+  vertical-align: middle !important;
+  /* border-top: 1px solid #dee2e6; */
+}
+
+.linkp {
+  cursor: pointer;
+}
+
+::ng-deep #toast-container > div {
+  width: 95%;
+  font-size: 11px;
+}
+.navbar {
+  font-size: 12px !important;
+}
+nav {
+  width: 100%;
+  height: 40px;  
+  border-radius: 6px !important;
+  -moz-border-radius: 6px !important;
+}
+.nav a{
+ color: white !important;
+ font-size: 12px !important;
+ }
+.nav li{
+ padding-right:1px;
+}
+
+.navbar-brand
+{
+  font-size: 12px !important;  
+}

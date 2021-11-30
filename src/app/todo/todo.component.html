@@ -1,0 +1,103 @@
+<div class="container" style="width: 100% !important;">
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a (click)="exportAsXLSX()">
+        <i class="fa fa-file-excel-o" style="font-size:15px;color:green"></i>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Nombres" aria-label="Nombres" [(ngModel)]="nombres" name="nombres">
+          <input class="form-control mr-sm-2" type="search" placeholder="Cedula" aria-label="Cedula" [(ngModel)]="cedula" name="cedula">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="buscarEstudiantes(true)">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container" style="width: 100%;">
+    <table class="table table-striped" style="font-size: 10px; width: 100%;">
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-center">No</th>
+          <th class="text-center">Cedula</th>
+          <th class="text-center">Nombre</th>
+          <th class="text-center">Curso</th>
+          <th class="text-center">1ra V.</th>
+          <th class="text-center">2da V.</th>
+          <th class="text-center">3ra V.</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of data; let i = index;">
+              <th width="20" class="text-center">{{i+1}}</th>
+              <th width="75">{{item.cedula}}</th>
+              <th width="200">{{item.nombres}}</th>
+              <td width="150" class="text-center">{{item.curso}} {{item.paralelo}}</td>
+              <td width="200" class="text-center">
+                <span *ngIf="item?.vacuna1?.codigoestudiante">Si</span>
+                <a *ngIf="!item?.vacuna1?.codigoestudiante" class="linkp" (click)="open(1, mymodal, item)">No</a>
+              </td>
+              <td width="200" class="text-center">
+                <span *ngIf="item?.vacuna2?.codigoestudiante">Si</span>
+                <a *ngIf="!item?.vacuna2?.codigoestudiante" class="linkp" (click)="open(2, mymodal, item)">No</a>
+              </td>
+              <td width="100" class="text-center">
+                <span *ngIf="item?.vacuna3?.codigoestudiante">Si</span>
+                <a *ngIf="!item?.vacuna3?.codigoestudiante" class="linkp" (click)="open(3, mymodal, item)">No</a>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <ng-template #mymodal let-modal >
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Vacuna {{estudianteVacuna.numeroVacuna}} </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body" style="font-size: 10px;">
+      <form class="form-inline">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4"> <span class="font-weight-bold">Estudiante: </span> {{estudianteVacuna.estudiante.nombres}}</div>
+            <div class="col-sm-4"> <span class="font-weight-bold">Cédula: </span> {{estudianteVacuna.estudiante.cedula}}</div>
+            <div class="col-sm-4"> <span class="font-weight-bold">Curso: </span> {{estudianteVacuna.estudiante.curso}} {{estudianteVacuna.estudiante.paralelo}}</div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-sm-2"> <span class="font-weight-bold">Esta vacunado: </span></div>
+            <div class="col-sm-10">
+              <label style="float: left;">
+                <input type="checkbox" [(ngModel)]="estudianteVacuna.estaVacunado" [ngModelOptions]="{standalone: true}" />
+              </label>
+            </div>
+            <div class="col-sm-2"> <span class="font-weight-bold">Fecha vacunación: </span></div>
+            <div class="col-sm-4">
+              
+              <div class="input-group">
+    
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">📅</button>
+                </div>
+            
+              </div>
+              
+              
+
+            </div>
+          </div>
+        </div>
+      </form>
+      
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Aceptar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Save click')">Cancelar</button>
+    </div>
+  </ng-template>

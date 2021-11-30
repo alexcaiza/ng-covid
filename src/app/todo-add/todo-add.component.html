@@ -1,0 +1,21 @@
+<div class="row mt-5">
+    <div class="col-md-6 mx-auto">
+        <h2 class="text-center">Add Todo</h2>
+        <div class="card mt-3">
+            <div class="card-body">
+              <form [formGroup]="todoForm" (ngSubmit)="addTodo()">
+                <div class="form-group">
+                  <label class="col-md-4">Title </label>
+                  <input type="text" class="form-control" formControlName="title" />
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary col-md-4" [disabled]="todoForm.invalid">Add</button>
+                  <a [routerLink]="['/']">
+                    <button type="submit" class="btn btn-primary col-md-4 ml-1">Back</button>
+                  </a>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+  </div>

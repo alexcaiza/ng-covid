@@ -1,0 +1,55 @@
+<div class="row mt-5 p-0 m-0">
+    <div class="col-md-6 mx-auto p-0 m-0">
+        <h2 class="text-center">Registro</h2>
+        <div class="card mt-3 p-0 m-0">
+            <div class="card-body">                
+              <form [formGroup]="todoForm" (ngSubmit)="registrarProfesorEstudiante(todoForm.value)">
+                <fieldset class="scheduler-border p-0 m-0">
+                    <legend class="scheduler-border">Profesor</legend>
+                    <div class="form-group m-0 p-0">
+                        <label class="col-md-4 form-control-sm">Nombre:</label>
+                        <input class="form-control form-control-sm" id="textNombreProfesor" type="text" formControlName="nombre" disabled>
+                    </div>
+                    <div class="form-group m-0 p-0">
+                        <label class="col-md-4 form-control-sm">Cantidad estudiantes:</label>
+                        <input class="form-control form-control-sm" id="textCantidad" type="text" formControlName="cantidad" disabled>
+                    </div>                    
+                </fieldset>
+                <fieldset class="scheduler-border p-0 m-0">
+                    <legend class="scheduler-border">Estudiante</legend>
+                    <div class="form-group p-0 m-0">
+                        <label class="col-md-4 form-control-sm">Cedula:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Ingrese la cedula" id="textCedulaEstudiante" formControlName="cedulaEstudiante">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button"
+                                    (click)="buscarEstudianteByCedula()">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group p-0 m-0">
+                        <label class="col-md-4 form-control-sm">Nombres:</label>
+                        <input class="form-control form-control-sm" id="textNombresEstudiante" type="text" formControlName="nombresEstudiante" disabled>
+                    </div>                                                  
+                    <div class="form-group p-0 m-0">
+                        <label class="col-md-4 form-control-sm">Curso:</label>
+                        <input class="form-control form-control-sm" id="textCursoEstudiante" type="text" formControlName="cursoEstudiante" disabled>
+                    </div>
+                </fieldset>
+                <div class="form-group p-0 m-0 text-center">
+                    <span style="color:red;">{{ message }}</span>
+                </div>
+                <div class="form-group p-0 m-0 text-center">
+                    <button type="submit" class="btn btn-primary col-md-4 btn-sm" [disabled]="todoForm.invalid">Aceptar</button>
+                    <a [routerLink]="['/']">
+                        <button type="submit" class="btn btn-primary col-md-4 btn-sm ml-1">Cancelar</button>
+                    </a>
+                </div>
+                
+              </form>
+            </div>
+        </div>
+    </div>
+  </div>

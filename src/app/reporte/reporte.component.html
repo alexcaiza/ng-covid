@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <h3>Reporte Docentes Animadores PPE</h3>
+    <br>
+    <table class="table table-striped table-responsive" >
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-center">Profesor</th>
+          <th class="text-center">Estudiante</th>
+          <th class="text-center">Cedula</th>
+          <th class="text-center">Curso</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of data; let i = index;">
+              <th width="200">{{item.nombreprofesor}}</th>
+              <td width="200">{{item.nombreestudiante}}</td>
+              <td width="100">{{item.cedulaestudiante}}</td>
+              <td width="50">{{item.cursoestudiante}}</td>
+              <td width="50">{{item.paraleloestudiante}}</td>            
+            </tr>
+      </tbody>
+    </table>
+  </div>
